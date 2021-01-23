@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/flatly/bootstrap.min.css"
+		integrity="sha384-qF/QmIAj5ZaYFAeQcrQ6bfVMAh4zZlrGwTPY7T/M+iTTLJqJBJjwwnsE5Y0mV7QK"
+		crossorigin="anonymous"
+	/>
+</head>
+
+<body>
+	<br><br><br><br><br>
+	
+	<div class='container container-fluid'>
+		
+		<h5><a th:href="@{/add}" >add new person</a></h5>
+		
+		<div th:switch="${persons}">
+	    	<h2 th:case="null">No Records yet!</h2>
+	        <div th:case="*">
+	            <table class="table table-striped table-hover ">
+	                <thead>
+	                    <tr>
+	                    	<th>FirstName</th>
+	                        <th>LastName</th>
+	                        <th>Username</th>
+	                        <th>Password</th>
+	                    </tr>
+	                </thead>
+					<tbody>
+		                <tr th:each = "p : ${persons}">
+							<td th:text="${p.fname}"></td>
+							<td th:text="${p.lname}"></td>
+							<td th:text="${p.username}"></td>
+							<td th:text="${p.password}"></td>
+		                </tr>
+	            	</tbody>
+	        	</table>
+	    	</div>
+		</div>
+		
+	</div>
+	
+	<br><br><br><br><br>
+	
+</body>
+</html>
+
+
+
+
+
+
+
